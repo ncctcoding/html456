@@ -5,14 +5,14 @@
     <link rel="icon" href="https://cdn.discordapp.com/emojis/979740859937484810.webp?size=128&quality=lossless"> 
 </head>
 
-<body onload="loadpage()">
+<body onload="loadpage()" id="body">
     <div>
         <div style="margin-left:20px; margin-top:20px; display:inline-block;">
             <img style="width:456px; height:600px;" id="i">
         </div>
         
         <div style="display:inline-block;margin-top:20px;margin-left:20px; position:absolute; width:900px; height:600px; background-color:#404040;" class="fixfont">
-            <b id="name"></b><br>
+            <b id="name"></b>
             <p id="pay"></p>
             <table class="option">
                 <tr>
@@ -38,10 +38,10 @@
 
     <!-- Comment Section -->
     <div class="enter">
-        <button style="float:right;margin:5 10;border-radius:6px;font-size:24px" onclick="window.location.href='shoope.html'">Comment</button>
         <img style="height:100%;display:inline-block;" src="https://cdn.discordapp.com/emojis/979740859937484810.webp?size=128&quality=lossless">
         <div id="comment"> 
-            <b id="usernickname" style="color:gray">Khoi Nguyen</b><br>
+            <b id="usernickname" style="color:gray">Khoi Nguyen</b>
+            <button id="postline" style="float:right;margin:5 20;border-radius:6px;font-size:24px;" onclick="post()">Comment</button>
             <textarea id="comment-line"></textarea>
         </div>
 
@@ -52,8 +52,8 @@
         
         <div id="comment">
             <b id="usernickname">User32975093275</b><br>
-            Giày chống nước chịu lửa rất tốt 👍</div>
+            Giày chống nước chịu lửa rất tốt 👍
+        </div>
     </div>
-
-    <script src="shope.js"></script>
 </body>
+<script src="shope.js"></script>

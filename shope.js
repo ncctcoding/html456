@@ -175,6 +175,7 @@ function loadpage() {
                        document.getElementById('i').src = hang[getinfo][2]
     document.getElementById('name').innerHTML = hang[getinfo][1]
     document.getElementById('pay').innerHTML = hang[getinfo][3].slice(10)
+    //document.getElementById('8').className = 'usernickname'
 
     for(let repeat = 1; repeat <= table_selector[getinfo].length; repeat++) {
         selector = 'l' + String(repeat)
@@ -231,7 +232,7 @@ function selected2(x) {
 }
 
 function hover(x) {
-    document.getElementById(x).style = 'background-color:gray;color:rgb(51, 50, 50);cursor: url("click.png") 3 0, auto;'
+    document.getElementById(x).style = 'background-color:gray;color:rgb(51, 50, 50);cursor: url("image/click.png") 3 0, auto;'
 }
  
 function release(x) {
@@ -243,9 +244,9 @@ function rate(x) {
     for(let repeat = 1; repeat <= 5; repeat++) {
         star = 's' + String(repeat)
         if(repeat <= x) { 
-            document.getElementById(star).src = 'star.png'
+            document.getElementById(star).src = 'image/star.png'
         } else {
-            document.getElementById(star).src = 'black-star.png'
+            document.getElementById(star).src = 'image/black-star.png'
         }
     }
     
@@ -268,13 +269,49 @@ function submit() {
 
     for(let repeat = 1; repeat <= 5; repeat++) {
         star = 's' + String(repeat)
-        document.getElementById(star).src = 'star.png'
+        document.getElementById(star).src = 'image/star.png'
         document.getElementById(star).onclick = ''
         calc = 71 + 54 * Number(localStorage.average) - 54
         document.getElementById('displayrate').style = "width 1s;position:absolute;height:50px;border:transparent;background-color:goldenrod;"+'margin-left:'+String(calc)+';'+'width:'+String(300-calc)
     }
     document.getElementById('ratedesc').onclick = ''
     document.getElementById('rate_on_5').innerHTML = String(parseInt(parseFloat(localStorage.average) * 100) / 100) + ' / 5'
+}
+
+function post() {
+    if(document.getElementById('comment-line').value !== '') {
+        var line = document.createElement('div')
+        line.className = 'comment-bar'
+        line.id = String(getinfo)
+
+        var img = document.createElement('img')
+        img.style = "height:100%;display:inline-block;"
+        img.src = "https://cdn.discordapp.com/emojis/979740859937484810.webp?size=128&quality=lossless"
+
+        var line2 = document.createElement('div')
+        line2.id = 'comment'
+
+        var br = document.createElement('br')
+        var nickname = document.createElement('b')
+        nickname.id = 'usernickname'
+        nickname.innerHTML = 'Khoi Nguyen'
+
+        var p = document.createElement('p')
+        p.innerHTML = document.getElementById('comment-line').value
+
+        line.appendChild(img)
+        line.appendChild(line2)
+
+        line2.appendChild(nickname)
+        line2.appendChild(p)
+
+        document.body.appendChild(line)
+        
+        console.log(getinfo)
+        console.log(line)
+
+        document.getElementById('postline').onclick = ''
+    }
 }
 
 

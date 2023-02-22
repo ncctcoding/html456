@@ -1,12 +1,11 @@
 
 * {
-    cursor: url(black.png), auto;
+    cursor: url('image/black.png'), auto;
 }
 
 body {
     background-color:gray;
     max-width:1425px;
-    min-height:620px;
     margin:auto;
 
     position:relative;
@@ -40,7 +39,7 @@ td {
 td:hover {
     background-color:gray;
     color:rgb(51, 50, 50);
-    cursor: url('click.png') 3 0, auto;
+    cursor: url('image/click.png') 3 0, auto;
 }
 
 th {
@@ -57,9 +56,7 @@ th {
     width:1376px;
     font-family:Arial, Helvetica, sans-serif;
     font-size:30px;
-    position:absolute;
     display:block;
-    visibility: hidden;
 }
 
 .enter {
@@ -70,7 +67,6 @@ th {
     width:1376px;
     font-family:Arial, Helvetica, sans-serif;
     font-size:30px;
-    display:block;
 }
 
 #comment {
@@ -89,10 +85,9 @@ th {
     resize:none;
     height:196px;
     width:1107px;
-    vertical-align: top;
     font-family:Arial, Helvetica, sans-serif;
 }
 
 button, textarea {
-    cursor: url('click.png') 3 0, auto;
+    cursor: url('image/click.png') 3 0, auto;
 }

@@ -1,5 +1,5 @@
 * {
-    cursor: url(black.png), auto;
+    cursor: url('image/black.png'), auto;
 }
 
 body {
@@ -43,5 +43,5 @@ div {
 }
 
 img:hover {
-    cursor: url('click.png') 3 0, auto;
+    cursor: url('image/click.png') 3 0, auto;
 }
