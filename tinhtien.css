@@ -1,0 +1,98 @@
+
+* {
+    cursor: url(black.png), auto;
+}
+
+body {
+    background-color:gray;
+    max-width:1425px;
+    min-height:620px;
+    margin:auto;
+
+    position:relative;
+}
+
+.fixfont {
+    font-size:2rem;
+    font-family:'Times New Roman';
+    color:white;
+}
+
+#pay {
+    font-size:65px;
+    font-family:'Times New Roman';
+    color:rgb(244, 100, 100);
+    margin-left:30px;
+}
+
+.option {
+    font-size:40px;
+    color:lightgray;
+    width:96%;
+}
+
+td {
+    border:1px solid white;
+    text-align:center;
+    width:25%;
+}
+
+td:hover {
+    background-color:gray;
+    color:rgb(51, 50, 50);
+    cursor: url('click.png') 3 0, auto;
+}
+
+th {
+    text-align:left;
+    margin-left:30px;
+    width:20%;
+}
+
+.comment-bar {
+    background-color:whitesmoke;
+    margin-top:20px;
+    height:250px;
+    margin-left:20px;
+    width:1376px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:30px;
+    position:absolute;
+    display:block;
+    visibility: hidden;
+}
+
+.enter {
+    background-color:whitesmoke;
+    margin-top:20px;
+    height:250px;
+    margin-left:20px;
+    width:1376px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:30px;
+    display:block;
+}
+
+#comment {
+    height:100%;
+    display:inline-block;
+    position:absolute;
+    margin-left:10px;
+}
+
+#usernickname {
+    font-size:40px
+}
+
+#comment-line {
+    font-size:30px;
+    resize:none;
+    height:196px;
+    width:1107px;
+    vertical-align: top;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+button, textarea {
+    cursor: url('click.png') 3 0, auto;
+}

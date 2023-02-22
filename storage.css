@@ -1,0 +1,75 @@
+html {
+        cursor: crosshair;
+}
+
+li {
+    font-family:'Times New Roman';font-size:175%;
+}
+h1 {
+    font-family:'Times New Roman';color:goldenrod;font-size:600%;
+}
+div {
+    background-color:lemonchiffon;border:2px outset black
+}
+
+
+.centered {
+    margin-left:auto;
+    margin-right:auto;
+}
+
+
+.fixfont {
+    font-size:30px;
+    font-family:'Arial';
+    color:black;
+}
+
+.aboutme {
+    width:45vw;
+    float:right;
+    height:658px;
+}
+
+.tvio {
+    width:31.5vw;
+    float:left;
+    height:658px;
+}
+
+.medialink {
+    background-color:white;
+    width:19vw;
+    height:658px;
+    margin-left:32vw;
+}
+
+.sun {
+    list-style-image: url(sun.png)
+}
+
+.xp {
+    list-style-image: url(xp.png)
+}
+
+.green {
+    color:green;
+}
+
+.supporter {
+    margin-top:5px;
+    height:40px;
+    text-align:center;
+}
+
+.buttong {
+    background-color: greenyellow;
+}
+
+.buttonr {
+    background-color: lightcoral;
+}
+
+.buttonp {
+    background-color: pink;
+}
