@@ -1,0 +1,28 @@
+<head>
+    <title>Login</title>
+    <link rel="icon" href="https://cdn.discordapp.com/emojis/979740859937484810.webp?size=128&quality=lossless">
+    <link rel="stylesheet" href="register.css">
+</head>
+
+<body>
+    <b>Đăng ký tài khoản</b>
+    <div>
+        <form action="/shoope.html">
+
+        <label>Họ: </label><br><input type="text" id="fname"><br><br>
+        <label>Tên: </label><br><input type="text" id="lname"><br><br>
+
+        <label>Mật khẩu: </label><br><input type="password" id="pass">
+        <input id="passcheck" type="button" value="Hiện mật khẩu" style="margin:5px" onclick = "showpass('pass','passcheck')"><br><br>
+        
+        <label>Nhập lại mật khẩu: </label><br><input type="password" id="pass2">
+        <input id="passcheck2" type="button" value="Hiện mật khẩu" style="margin:5px" onclick = "showpass('pass2','passcheck2')"><br><br>
+        
+        <input type="button" onclick="consoles()" value = "Đăng ký" style="float:left;">
+        <input type="submit" style="float:right;margin-right:7px;" value = "Quay lại"><br>
+        <label style="color:red" id="notify"></label>
+
+        </form>
+    </div>
+    <script src="shope.js"></script>
+</body>

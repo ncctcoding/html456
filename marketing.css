@@ -7,6 +7,8 @@ body {
     min-height:calc(720px);
     max-width:50000px;
     background-color:gray;
+    padding:0;
+    margin:0;
 }
 
 div.marketing_square {
@@ -20,10 +22,14 @@ div.marketing_square {
     margin-top:5px;
     border:gray;
     background-color:gray;
+    width:calc(100% - 10px);
+    margin:auto;
 }
 
 .optionbar {
     background-color:lightgray;
+    width:calc(100% - 10px);
+    margin:auto;
 }
 
 p {
@@ -42,6 +48,28 @@ div {
     color:black;
 }
 
-img:hover {
+img:hover, li:hover {
     cursor: url('image/click.png') 3 0, auto;
+}
+
+li {
+    display:inline-block;
+    background-color:orange;
+    border: 5px solid orangered;
+    font-size:20px;
+    padding:7px;
+    margin-left:5px;
+    font-family:'Times New Roman', Times, serif;
+    font-weight:bold;
+}
+
+li.admin {
+    background-color:purple;
+    border: 5px solid #ff33ff;
+    color:white;
+}
+
+ul {
+    background-color: darkred;
+    padding:5px;
 }
