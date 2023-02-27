@@ -36,14 +36,19 @@ if(localStorage.khohang3 === undefined) {
             9:[['Trắng',hang[9][2]]],}))
 
     localStorage.setItem('table_selectors2', JSON.stringify({1:[hang[1][3].slice(10),hang[1][3].slice(10),hang[1][3].slice(10)],
-                 2:['4.390.000đ','4.420.000đ','4.450.000đ'],
-                 3:[hang[3][3].slice(10),hang[3][3].slice(10),hang[3][3].slice(10)],
-                 4:[hang[4][3].slice(10),hang[4][3].slice(10),hang[4][3].slice(10)],
-                 5:['2.500.000đ','2.530.000đ','2.560.000đ'],
-                 6:[hang[6][3].slice(10),hang[6][3].slice(10),hang[6][3].slice(10)],
-                 7:[hang[7][3].slice(10),hang[7][3].slice(10),hang[7][3].slice(10)],
-                 8:[hang[8][3].slice(10),hang[8][3].slice(10),hang[8][3].slice(10)],
-                 9:[hang[9][3].slice(10),hang[9][3].slice(10),hang[9][3].slice(10)]}))
+            2:['4.390.000đ','4.420.000đ','4.450.000đ'],
+            3:[hang[3][3].slice(10),hang[3][3].slice(10),hang[3][3].slice(10)],
+            4:[hang[4][3].slice(10),hang[4][3].slice(10),hang[4][3].slice(10)],
+            5:['2.500.000đ','2.530.000đ','2.560.000đ'],
+            6:[hang[6][3].slice(10),hang[6][3].slice(10),hang[6][3].slice(10)],
+            7:[hang[7][3].slice(10),hang[7][3].slice(10),hang[7][3].slice(10)],
+            8:[hang[8][3].slice(10),hang[8][3].slice(10),hang[8][3].slice(10)],
+            9:[hang[9][3].slice(10),hang[9][3].slice(10),hang[9][3].slice(10)]}))
+
+    localStorage.setItem('userdata',JSON.stringify({'Khoi Nguyen':'konkakangku','Khoi Nguyen-admin':true}))
+    localStorage.setItem('active_account','')
+
+    localStorage.setItem('savecomment',JSON.stringify([]))
 }
 else 
 {
@@ -52,6 +57,12 @@ else
 
 table_selector = JSON.parse(localStorage.table_selectors)
 table_selector2 = JSON.parse(localStorage.table_selectors2)
+
+users = JSON.parse(localStorage.userdata)
+
+active = localStorage.active_account
+
+comment_output = JSON.parse(localStorage.savecomment)
 
 function testhang(stt,tenhang,img) {
     if(stt !== undefined && tenhang !== undefined) {
@@ -101,6 +112,9 @@ function save() {
     localStorage.setItem('khohang3',JSON.stringify(hang))
     localStorage.setItem('table_selectors',JSON.stringify(table_selector))
     localStorage.setItem('table_selectors2',JSON.stringify(table_selector2))
+    localStorage.setItem('userdata',JSON.stringify(users))
+    localStorage.setItem('active_account',active)
+    localStorage.setItem('savecomment',JSON.stringify(comment_output))
 }
 
 function add() {
@@ -143,8 +157,19 @@ function output() {
     } else {
         calc = 71 + 54*5 - 54
     }
+    check_admin = active+'-admin'
+    if(users[check_admin]) {
+        document.getElementById('themhang').className = 'admin'
+    }
+
+    if(active !== '') {
+        document.getElementById('ratedesc').style.color = 'green'
+    } else {
+        document.getElementById('ratedesc').style.color = 'red'
+    }
 
     document.getElementById('displayrate').style = "width 1s;position:absolute;height:50px;border:transparent;background-color:lightgray;"+'margin-left:'+String(calc)+';'+'width:'+String(300-calc)
+    document.getElementById('displayaccount').innerHTML = active
 }
 
 function refresh() {
@@ -194,6 +219,7 @@ function loadpage() {
     getinfo = localStorage.pass
 
     document.getElementById('i').src = hang[getinfo][2]
+    document.getElementById('usernickname').innerHTML = active
     document.getElementById('name').innerHTML = hang[getinfo][1]
     document.getElementById('pay').innerHTML = hang[getinfo][3].slice(10)
     //document.getElementById('8').className = 'usernickname'
@@ -205,8 +231,20 @@ function loadpage() {
         setClicker(selector)
     }
 
+    if(active !== '') {
+        document.getElementById('postline').onclick = function() {post()}
+        document.getElementById('postline').style.color = 'black'
+    } else {
+        document.getElementById('postline').onclick = ''
+        document.getElementById('postline').style.color = 'red'
+    }
+
     //Comment Section
     document.getElementById(hang[getinfo][1]).style.visibility = 'visible'
+
+    for(let repeat = 0; repeat <= comment_output.length - 1; repeat++) {
+        document.getElementById(hang[getinfo][1])
+    }
 }
 
 function setClicker(x) {
@@ -279,35 +317,41 @@ function rate(x) {
 
 document.getElementById('rate_on_5').innerHTML = String(parseInt(parseFloat(localStorage.getItem('average')) * 100) / 100) + ' / 5'
 function submit() {
-    if(localStorage.current_rate !== '0' && localStorage.current_rate !== undefined) {
-        add_comment = Number(localStorage.rater) + 1
-        localStorage.setItem('rater',add_comment)
+    if(active !== ''){
+        if(localStorage.current_rate !== '0' && localStorage.current_rate !== undefined) {
+            add_comment = Number(localStorage.rater) + 1
+            localStorage.setItem('rater',add_comment)
 
-        sum = Number(localStorage.overall) + Number(localStorage.current_rate)
-        localStorage.setItem('overall',sum)
-        localStorage.setItem('average',sum / localStorage.rater)
+            sum = Number(localStorage.overall) + Number(localStorage.current_rate)
+            localStorage.setItem('overall',sum)
+            localStorage.setItem('average',sum / localStorage.rater)
+        }
+
+        for(let repeat = 1; repeat <= 5; repeat++) {
+            star = 's' + String(repeat)
+            document.getElementById(star).src = 'image/black-star.png'
+        }
+
+        localStorage.setItem('current_rate',0)
+        document.getElementById('rate_on_5').innerHTML = String(parseInt(parseFloat(localStorage.average) * 100) / 100) + ' / 5'
     }
-
-    for(let repeat = 1; repeat <= 5; repeat++) {
-        star = 's' + String(repeat)
-        document.getElementById(star).src = 'image/black-star.png'
-    }
-
-    localStorage.setItem('current_rate',0)
-    document.getElementById('rate_on_5').innerHTML = String(parseInt(parseFloat(localStorage.average) * 100) / 100) + ' / 5'
 }
 
 //Comment line
+
 function post() {
+    comment_output.unshift(newComment())
+    save()
+}
+
+function newComment() {
     if(document.getElementById('comment-line').value !== '') {
-        var line = document.createElement('div')
-        line.className = 'comment-bar'
-        line.id = String(getinfo)
+        var line = document.getElementById(hang[getinfo][1])
         line.style.visibility = 'visible'
 
         var img = document.createElement('img')
         img.style = "height:100%;display:inline-block;"
-        img.src = "https://cdn.discordapp.com/emojis/979740859937484810.webp?size=128&quality=lossless"
+        img.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAMFBMVEXg4OC9vb3f39/Kysrc3Ny+vr7Q0NDHx8fNzc3ExMTU1NTV1dXY2NjBwcG6urrLy8vXjdnDAAAEKElEQVR4nO3d63KrIBQF4IAIBgXf/22P5GpbEwGVzfasb6bTv6zhoiCQywUAAAAAAAAAAAAAAAAAAAAAAABgiVTW6k5bqyR1UQ6gbOP8RAgR/rnGKuoi7ao3bcg251vTUxdrN/31d7xHyOs5Miq3nO+W0Z2grXaf890ydtQF3Eh+aKDzpsp6YFXtSr6gZdxSh4h8wUBd0FwqMqAQTGtRxjTRR0Pl2Rev0QGFuFIXNsfKY+Injg+N2FHmid9ok9JGA3bt1Ka00cBb6iIncokBhXDURU7Tp1bhVIm8JhqpvTBg1RPj32bmOL3Z6PRGymysMVl1aKiLHU+mj6SB4/N2qnIa6dRM+XTEITMhnze3rIFmSqipCx6tywooBJ8JxvkTNpkJG+qCRzt/HZ4/oc5MyGcszZg7BYzmT+d/p0lYKZ3jtGqaMwHmNQXOmx/yGWj+hzn++ddp0pdLmS1iTDLqkLrIiZLHGlbjTJC8VMNokeYhsScyemN7SVtRZLSS+JLUTvm10SDlsc/qYf8WPYni2AnvbGRCZs/6uT4qINsaDIb1mWLLZ6V7kTQrexMNy1H0B/tne/AsX8u4C77J7kNG33b8K/BO6oV9wt7ps+S7Ud30ivOMOf13HdOH/DdqsF1jjGk6O5wwHgAAAAAAAMBFymn2a3U3Nk1jpr8xXDswKHmGVYwwrzeu9Y/LBmarNEHrDOf5vhy0ccKvnnT2whk9sKvOYUz+BjzyWftW+iqydgyJq2bQYnPjcQlpt8R7hax2pV91m+M9Q1a5XDysfGRKDGlqG3f2zVdfRpW3n3TNtZa2Kse96+/Jj1W8CHz7Aro5YgVfUNe+Ym/OSP0VPGInwla0OxmS7r7IRXlnxsEt9BWRalufPOYZsYTmLqnMYyN5WoqA5WowINieWTYgwVmFpswg8+YLHzDNOE+xOWLR1xtZPF9QsivmHmXepmA7zTu4tV252RRNFRasxKLP+rlih0wzDzJvV2xPf+5x++1KzTLybhDaQ6lJRt4NQnsodafb+evw/GNp5FGY/RU8XFN8ZhGUnV1QDDZlr46keDMtvMZfvisWP+GWeWNZLorD7Id9j1kMOJYPWGw9+BaQaE244IowTcByEQlvPSkTkfRal9Wfr9jOE99bc/hwQ/bh6eXgT4g1XLife8FenCpurTnwS3ctZ/XVQeONr2ZDzVGrbxV0wbdh/wmjq6SFPsmdp/2+qWI71A/Dl18fS85XWwU+6L0G1baKZ8QStc9HqaaeIfQvtbk7+qrzBRvrsfp8gfp0W8tq9fG5DkRak7yp3Qtj63tAfKG0Wz0QNIvnXeXnLBYpa+IeH63h+8Oyt9NdX+pyqjuOp7p+kaq/H2Lzs98D9vcja/2pfvtYDb21WndaW9vzPXQIAAAAAAAAAAAAAAAAAAAAAAAAh/oHOVI0YSQb7ewAAAAASUVORK5CYII="
 
         var line2 = document.createElement('div')
         line2.id = 'comment'
@@ -316,11 +360,10 @@ function post() {
         var br = document.createElement('br')
         var nickname = document.createElement('b')
         nickname.id = 'usernickname'
-        nickname.innerHTML = 'Khoi Nguyen'
+        nickname.innerHTML = active
 
         var p = document.createElement('span')
         p.innerHTML = document.getElementById('comment-line').value
-        p.setAttribute('style','scroll-snap-type:y mandatory')
 
         line.appendChild(img)
         line.appendChild(line2)
@@ -329,13 +372,11 @@ function post() {
         line2.appendChild(br)
         line2.appendChild(p)
 
-        document.body.appendChild(line)
+        document.body.insertBefore(line,document.body.children[2])
         document.getElementById('comment-line').value = ''
-
-        console.log(getinfo)
-        console.log(line)
-
+        
     }
+    return [active,p.innerHTML,hang[getinfo][1]]
 }
 
 //Login & Register
@@ -356,18 +397,84 @@ function consoles() {
     //console.log(document.getElementById('pass').value)
     //console.log(document.getElementById('pass2').value)
     
-    if(document.getElementById('fname').value === '' || document.getElementById('lname').value === ''){
-        document.getElementById('notify').innerHTML = 'Họ và tên của bạn bị bỏ trống'
+    if(document.getElementById('name').value === ''){
+        document.getElementById('notify').innerHTML = 'Tên của bạn bị bỏ trống'
         return
     } else 
     {
         if(document.getElementById('pass').value !== document.getElementById('pass2').value || document.getElementById('pass2').value === '' || document.getElementById('pass').value === ''){
             document.getElementById('notify').innerHTML = 'Vui lòng kiểm tra lại mật khẩu'
-        return
+            return
+    } else 
+    {
+        if(users[document.getElementById('name').value] !== undefined) {
+            document.getElementById('notify').innerHTML = 'Tài khoản này đã tồn tại'
+            return
+        }
     }
-        window.location.href = 'login.html'
+    
+    if(createAccount()) {
+    window.location.href = 'login.html'
+    }
 }
 
 }
+
+function createAccount() {
+    nick = document.getElementById('name').value
+    mk = document.getElementById('pass').value
+
+    if(nick !== '' && mk !== '') {
+        users[nick] = mk
+        users[nick+'-admin'] = false
+        save()
+        return true
+    }
+    return false
+}
+
+function login() {
+    nick = document.getElementById('name').value
+    mk = document.getElementById('pass').value
+
+    if(users[nick] === mk) {
+        active = nick
+        save()
+        window.location.href = 'shoope.html'
+    } else {
+        document.getElementById('notify').innerHTML = 'Sai tên đăng nhập hoặc mật khẩu.'
+    }
+}
+
+function logout() {
+    active = ''
+    save()
+    window.location.href = 'shoope.html'
+}
+
+function enabled() {
+    document.getElementById('accountfunction').style.visibility = 'visible'
+    document.getElementById('accountfunction').style.transition = '0s'
+
+    document.getElementById('accountfunction1').style.visibility = 'visible'
+    document.getElementById('accountfunction1').style.transition = '0s'
+
+    document.getElementById('accountfunction2').style.visibility = 'visible'
+    document.getElementById('accountfunction2').style.transition = '0s'
+
+}
+
+function disabled() {
+    document.getElementById('accountfunction').style.visibility = 'hidden'
+    document.getElementById('accountfunction').style.transition = '0.2s'
+
+    document.getElementById('accountfunction1').style.visibility = 'hidden'
+    document.getElementById('accountfunction1').style.transition = '0.2s'
+
+    document.getElementById('accountfunction2').style.visibility = 'hidden'
+    document.getElementById('accountfunction2').style.transition = '0.2s'
+}
+
+
 
 

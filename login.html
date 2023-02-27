@@ -8,9 +8,14 @@
     <b>Đăng nhập tài khoản</b>
     <div>
         <form action="shoope.html">
+        
+        <label>Tên: </label><br><input type="text" id="name"><br><br>
+        <label>Mật khẩu: </label><br><input type="password" id="pass">
+        <input id="passcheck" type="button" value="Hiện mật khẩu" style="margin:5px" onclick = "showpass('pass','passcheck')"><br><br>
 
-        <label>Mật khẩu: </label><br><input type="password" id="pass"><br><br>
-        <input type="submit" value = "Đăng nhập"><br>
+        <input type="button" value = "Đăng nhập" onclick="login()">
+        <input type="submit" style="float:right;margin-right:7px;" value = "Quay lại"><br>
+
         <label style="color:red" id="notify"></label>
 
         </form>

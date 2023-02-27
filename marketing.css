@@ -61,6 +61,8 @@ li {
     margin-left:5px;
     font-family:'Times New Roman', Times, serif;
     font-weight:bold;
+    width:100px;
+    text-align:center;
 }
 
 li.admin {
@@ -69,7 +71,25 @@ li.admin {
     color:white;
 }
 
+li.not-for-admin {
+    visibility: hidden;
+}
+
 ul {
     background-color: darkred;
     padding:5px;
+    height:45px;
+}
+
+#accountfunction, #accountfunction1, #accountfunction2 {
+    visibility: hidden;
+    float:right;
+    border-top:0px;
+    width:95px;
+    background-color:orange;
+}
+
+#accountbar {
+    background:transparent;
+    border:transparent;
 }

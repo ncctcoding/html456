@@ -8,9 +8,17 @@
     
     <ul>
         <li>Trang chủ</li>
-        <li style="float:right;" onclick="window.location.href='register.html' ">Đăng ký</li>
-        <li style="float:right;" onclick="add()" class="admin">Thêm hàng</li>
+        
+        <div style="float:right" id="accountbar">
+            <li onmousemove="enabled()" onmouseleave="disabled()">Tài khoản</li><br>
+            <li onclick="window.location.href='register.html'" id="accountfunction" onmousemove="enabled()" onmouseleave="disabled()">Đăng ký</li><br>
+            <li onclick="window.location.href='login.html'" id="accountfunction1" onmousemove="enabled()" onmouseleave="disabled()">Đăng nhập</li><br>
+            <li id="accountfunction2" onmousemove="enabled()" onmouseleave="disabled()" onclick="logout()">Đăng xuất</li>
+        </div>
+        <li style="float:right;" onclick="add()" id="themhang" class="not-for-admin">Thêm hàng</li>
     </ul>
+
+    <h1 style="color:white"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAMFBMVEXg4OC9vb3f39/Kysrc3Ny+vr7Q0NDHx8fNzc3ExMTU1NTV1dXY2NjBwcG6urrLy8vXjdnDAAAEKElEQVR4nO3d63KrIBQF4IAIBgXf/22P5GpbEwGVzfasb6bTv6zhoiCQywUAAAAAAAAAAAAAAAAAAAAAAABgiVTW6k5bqyR1UQ6gbOP8RAgR/rnGKuoi7ao3bcg251vTUxdrN/31d7xHyOs5Miq3nO+W0Z2grXaf890ydtQF3Eh+aKDzpsp6YFXtSr6gZdxSh4h8wUBd0FwqMqAQTGtRxjTRR0Pl2Rev0QGFuFIXNsfKY+Injg+N2FHmid9ok9JGA3bt1Ka00cBb6iIncokBhXDURU7Tp1bhVIm8JhqpvTBg1RPj32bmOL3Z6PRGymysMVl1aKiLHU+mj6SB4/N2qnIa6dRM+XTEITMhnze3rIFmSqipCx6tywooBJ8JxvkTNpkJG+qCRzt/HZ4/oc5MyGcszZg7BYzmT+d/p0lYKZ3jtGqaMwHmNQXOmx/yGWj+hzn++ddp0pdLmS1iTDLqkLrIiZLHGlbjTJC8VMNokeYhsScyemN7SVtRZLSS+JLUTvm10SDlsc/qYf8WPYni2AnvbGRCZs/6uT4qINsaDIb1mWLLZ6V7kTQrexMNy1H0B/tne/AsX8u4C77J7kNG33b8K/BO6oV9wt7ps+S7Ud30ivOMOf13HdOH/DdqsF1jjGk6O5wwHgAAAAAAAMBFymn2a3U3Nk1jpr8xXDswKHmGVYwwrzeu9Y/LBmarNEHrDOf5vhy0ccKvnnT2whk9sKvOYUz+BjzyWftW+iqydgyJq2bQYnPjcQlpt8R7hax2pV91m+M9Q1a5XDysfGRKDGlqG3f2zVdfRpW3n3TNtZa2Kse96+/Jj1W8CHz7Aro5YgVfUNe+Ym/OSP0VPGInwla0OxmS7r7IRXlnxsEt9BWRalufPOYZsYTmLqnMYyN5WoqA5WowINieWTYgwVmFpswg8+YLHzDNOE+xOWLR1xtZPF9QsivmHmXepmA7zTu4tV252RRNFRasxKLP+rlih0wzDzJvV2xPf+5x++1KzTLybhDaQ6lJRt4NQnsodafb+evw/GNp5FGY/RU8XFN8ZhGUnV1QDDZlr46keDMtvMZfvisWP+GWeWNZLorD7Id9j1kMOJYPWGw9+BaQaE244IowTcByEQlvPSkTkfRal9Wfr9jOE99bc/hwQ/bh6eXgT4g1XLife8FenCpurTnwS3ctZ/XVQeONr2ZDzVGrbxV0wbdh/wmjq6SFPsmdp/2+qWI71A/Dl18fS85XWwU+6L0G1baKZ8QStc9HqaaeIfQvtbk7+qrzBRvrsfp8gfp0W8tq9fG5DkRak7yp3Qtj63tAfKG0Wz0QNIvnXeXnLBYpa+IeH63h+8Oyt9NdX+pyqjuOp7p+kaq/H2Lzs98D9vcja/2pfvtYDb21WndaW9vzPXQIAAAAAAAAAAAAAAAAAAAAAAAAh/oHOVI0YSQb7ewAAAAASUVORK5CYII=" style="vertical-align:bottom;border-radius:50%;width:50px;height:50px;"> <span id="displayaccount">Khoi Nguyen</span></h1>
 
     <div class="optionbar">
 
@@ -23,14 +31,13 @@
             <img src="image/star.png" style="justify-content:center;">
         </div>
 
-        <h1 class="fixfont" style="text-align:center">Shopee riel</h1>
-        <img src="https://dictionary.cambridge.org/vi/images/thumb/Tshirt_noun_001_18267.jpg?version=5.0.287" width="8%" height="19%" style="margin-left:37%" onclick = "T()">
+        <img src="https://dictionary.cambridge.org/vi/images/thumb/Tshirt_noun_001_18267.jpg?version=5.0.287" width="8%" height="19%" style="margin-left:37%;margin-top:70px;" onclick = "T()">
         <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAH0AZAMBIgACEQEDEQH/xAAcAAEAAgMBAQEAAAAAAAAAAAAABgcBBQgDBAL/xABAEAABAwIEAgUGCgsBAAAAAAABAAIDBBEFBgcSITETYXGhwSIjMkFRkRQWQlJVYoGTsvAlMzZTcoKDoqOxwgj/xAAWAQEBAQAAAAAAAAAAAAAAAAAAAQL/xAAZEQEAAgMAAAAAAAAAAAAAAAAAAREhMUH/2gAMAwEAAhEDEQA/ALkREWVEREBERAREQEREBERAREQEREBERARVHq3mnF8NzJR4dhGJS0bG0rZJejIF3PcRd1wfU3vUGkz3mxjjbH6vgeY2kH3hWkdKouavj/mp7Y2sx+tYdvlF/R8+ryeAXiM/ZvaWvbj9USONn7bHt4JQ6bRfPh1Uyuw+mrIiCyohZK0j2OAPivoUUREQEREBERARFlBzhqbVuq8+Yu55uIpGws7Gsb43UWPoraZondU5oxmV5u4184+wPIHcAtYeS2jxb8q6/JNivQ8G3Xm/ndB0npXVfC8g4Q65PRRGHj9Rxb4KVqv9DpC/I+3jaOslA6r2PirAWFEREBERAREQFkc1hRnUjE63B8m19bhrgyobsaHn5Ac8NJHXYlBz9mD9ocY4W/SFRw/quWsmkDbloNuO0E8V9eIwPpajo5DudMxtSCXEm0gDhcn18V4UtG6urqWiYfOVU7IA72Fzg3xW0eDH7mBYkDQTtJI9vJWHrHgVNg+YKF9FE2KCoo2tDWiwvFZv4Sz3KBRxGZ4jY0uc64AHZ+SgvfQttsih3zqyUjuHgrBVXaFYgXYfieEB5fFRvZKxxH7zdcDquy/t4nsForIIiKKIiICIiAtPnDD2YplbFaJ9wJaV9iPU4C7T7wFuFh7GyNLHi7XAgjqKDkNrzIYnHm4d35KkWnkQq9QMCiIFm1O+38LXO8Fp8UoRh2LV1GHXZSVEsDSeZ2OIB9wUp0Xi6bUClcR+qgmk7PJ2/wDS2if670gly5h9YB5VPWbb/Vex1x7w1Ue+V0RLozYlpaew810HrND0uQat1xeKeB4+8A/04rnqYEs4gBSNC3f/AD5D5vHKrjZxhj928+KuBV9odhYocktqi7c+vqHynqDTsA/tv9qsFRRERQEREBERAWVhZQcr5ubfNWNhv0hP1W845SbQpo+PMv1cPl/HGo1nEg5oxzo+Xw+f37zdSbQgWztNf6Ol/HGt8RaWrLWuyBiocL8IyO3pG2XN73XaLrpHVa3xBxW/zY7feNXN5bwPapA6J0cJOnmG7jez5wOzpXqaKD6Lva7T6ha35E07T29I4+KnCiiIigIiICIiAsjmFhZQcoZhucxYs4G96+ov1+ccphocWtzy+x9KglFv5oyvszFpRmJ+NV1Thpo6imqKiSaMum2OAc4usQR6r25rd6Xad4zl7MD8Xxh1PEGwvjjhik3l5da5J5ACy1eESLWQkafV9jYmWAf5WLni5PAWuunc9YBJmbLNVhUE7IZpCx8b3glu5rg4A29Rta6pmTSjNzX7BS0rxf02VTdvfY9ykCxdDzfJBt6IrJQO5WAoxp1lmfKmW24fVzsmqHyumkMd9rSbeSCefLnwUnUUREQEREBERAREQEREBERAREQEREBERB//2Q==" width="8%" height="19%" style="margin-left:20px" onclick = "quan()">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_G555tRmyFrmWKblW886BSoavPtTkhXOR5tHb8KrccQ&s" width="8%" height="19%" style="margin-left:20px" onclick = "boot()">
         
     </div>
+
     <div class="big_marketing_square" id="mainsquares">
-        <h1 style="text-align:center">------------------------------------------------------------------------------------</h1>
     </div>
 
     <div style="position:relative;width:300px;text-align:center;margin:auto;border:transparent;background-color:goldenrod;">

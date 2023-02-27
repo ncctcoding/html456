@@ -10,6 +10,7 @@ body {
     min-height:calc(720px);
     margin:auto;
 
+
     position:relative;
 }
 
@@ -52,10 +53,10 @@ th {
 
 .comment-bar {
     background-color:whitesmoke;
-    margin-top:20px;
+    margin-top:15px;
     height:250px;
-    margin-left:20px;
-    width:1376px;
+    margin-left:15px;
+    width:1381px;
     font-family:Arial, Helvetica, sans-serif;
     font-size:30px;
     display:block;
@@ -64,10 +65,10 @@ th {
 
 .enter {
     background-color:whitesmoke;
-    margin-top:20px;
-    height:250px;
-    margin-left:20px;
-    width:1376px;
+    margin-top:15px;
+    height:255px;
+    margin-left:15px;
+    width:1381px;
     font-family:Arial, Helvetica, sans-serif;
     font-size:30px;
 }
@@ -97,3 +98,4 @@ th {
 button, textarea {
     cursor: url('image/click.png') 3 0, auto;
 }
+
