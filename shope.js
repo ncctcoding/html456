@@ -242,8 +242,8 @@ function loadpage() {
     //Comment Section
     document.getElementById(hang[getinfo][1]).style.visibility = 'visible'
 
-    for(let repeat = 0; repeat <= comment_output.length - 1; repeat++) {
-        document.getElementById(hang[getinfo][1])
+    for(let repeat = comment_output.length - 1; repeat >= 0; repeat--) {
+        newComment(comment_output[repeat][0],comment_output[repeat][1],comment_output[repeat][2])
     }
 }
 
@@ -344,10 +344,15 @@ function post() {
     save()
 }
 
-function newComment() {
-    if(document.getElementById('comment-line').value !== '') {
-        var line = document.getElementById(hang[getinfo][1])
+function newComment(x,y,z) {
+        var line = document.createElement('div')
+        line.className = 'comment-bar'
+        if(x === undefined) {line.id = hang[getinfo][1]} 
+         else {line.id = x}
+
         line.style.visibility = 'visible'
+        console.log(line.id,hang[getinfo][1])
+        if(line.id !== hang[getinfo][1]) {line.style.visibility = 'hidden'}
 
         var img = document.createElement('img')
         img.style = "height:100%;display:inline-block;"
@@ -360,10 +365,14 @@ function newComment() {
         var br = document.createElement('br')
         var nickname = document.createElement('b')
         nickname.id = 'usernickname'
-        nickname.innerHTML = active
+
+        if(y === undefined) {nickname.innerHTML = active}
+        else {nickname.innerHTML = y}
 
         var p = document.createElement('span')
-        p.innerHTML = document.getElementById('comment-line').value
+
+        if(z === undefined) {p.innerHTML = document.getElementById('comment-line').value}
+        else {p.innerHTML = z}
 
         line.appendChild(img)
         line.appendChild(line2)
@@ -374,9 +383,8 @@ function newComment() {
 
         document.body.insertBefore(line,document.body.children[2])
         document.getElementById('comment-line').value = ''
-        
-    }
-    return [active,p.innerHTML,hang[getinfo][1]]
+            
+        return [hang[getinfo][1],active,p.innerHTML]
 }
 
 //Login & Register
