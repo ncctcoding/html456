@@ -240,7 +240,8 @@ function loadpage() {
     }
 
     //Comment Section
-    document.getElementById(hang[getinfo][1]).style.visibility = 'visible'
+    
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     for(let repeat = comment_output.length - 1; repeat >= 0; repeat--) {
         newComment(comment_output[repeat][0],comment_output[repeat][1],comment_output[repeat][2])
